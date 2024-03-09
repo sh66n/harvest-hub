@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
+const RANDOM_QUOTE_URL = "http://localhost:5000/api/farmers";
 
 function App() {
-    const [farmers, setFarmers] = useState([{}]);
+    const [farmers, setFarmers] = useState([{ _id: "", name: "" }]);
     useEffect(() => {
-        fetch("/api/farmers")
-            .then((res) => res.json())
-            .then((data) => {
-                setFarmers(data);
-            })
-            .catch((e) => {
-                console.log("Failed to fetch");
-            });
+        getData();
     }, []);
+
+    const getData = async () => {
+        const res = await fetch(RANDOM_QUOTE_URL);
+        const data = await res.json();
+        setFarmers(data);
+    };
+
     return (
-        <div>
-            <ul>
-                {farmers.map((f) => (
-                    <li key={f._id}>{f.name}</li>
-                ))}
-            </ul>
-        </div>
+        <>
+            {farmers.map((f) => (
+                <li key={f._id}>{f.name}</li>
+            ))}
+        </>
     );
 }
 
