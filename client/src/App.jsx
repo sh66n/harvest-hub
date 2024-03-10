@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const RANDOM_QUOTE_URL = "http://localhost:5000/api/farmers";
+import FarmerList from "./FarmerList";
+import FarmerForm from "./FarmerForm";
 
-function App() {
-    const [farmers, setFarmers] = useState([{ _id: "", name: "" }]);
-    useEffect(() => {
-        getData();
-    }, []);
-
-    const getData = async () => {
-        const res = await fetch(RANDOM_QUOTE_URL);
-        const data = await res.json();
-        setFarmers(data);
-    };
-
+export default function App() {
     return (
-        <>
-            {farmers.map((f) => (
-                <li key={f._id}>{f.name}</li>
-            ))}
-        </>
+        <div>
+            <FarmerList />
+            <FarmerForm />
+        </div>
     );
 }
-
-export default App;
