@@ -1,7 +1,7 @@
 import React from "react";
 
-import FarmerList from "./FarmerList";
-import FarmerForm from "./FarmerForm";
+import FarmerList from "./components/FarmerList";
+import FarmerForm from "./components/FarmerForm";
 
 export default function App() {
     return (
