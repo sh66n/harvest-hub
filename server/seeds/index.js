@@ -16,6 +16,6 @@ const loadTestData = () =>{
         .then(() => {
             console.log("added data!")
         })
-}aaaaaaa
+}
 
 loadTestData();
