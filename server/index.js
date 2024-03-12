@@ -27,13 +27,20 @@ app.get("/api/farmers", async(req, res)=>{
     const allFarmers = await Farmer.find({});
     res.send(allFarmers)
 })
+app.get("/api/farmers/:id", async(req, res) => {
+    const {id} = req.params
+    const requiredFarmer = await Farmer.find({_id: id});
+    res.send(requiredFarmer)
+})
 app.post("/api/farmers", async(req, res) => {
     await Farmer.create(req.body);
 })
 app.delete("/api/farmers/:id", async(req, res) => {
     const {id} = req.params
+    console.log(id)
     await Farmer.deleteOne({_id: id})
 })
+
 
 
 app.listen(5000, ()=>{
