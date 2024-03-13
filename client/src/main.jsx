@@ -12,8 +12,10 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import HomeRoute from "./routes/HomeRoute.jsx";
 import UserRoute from "./routes/UserRoute.jsx";
 import UserListRoute from "./routes/UserListRoute.jsx";
-import LoginRoute from "./routes/LoginRoute.jsx";
-import SignUpRoute from "./routes/SignUpRoute.jsx";
+import FarmerLoginRoute from "./routes/FarmerLoginRoute.jsx";
+import FarmerSignUpRoute from "./routes/FarmerSignUpRoute.jsx";
+import CustomerLoginRoute from "./routes/CustomerLoginRoute.jsx";
+import CustomerSignUpRoute from "./routes/CustomerSignUpRoute.jsx";
 
 const router = createBrowserRouter([
     {
@@ -26,12 +28,20 @@ const router = createBrowserRouter([
         element: <HomeRoute />,
     },
     {
-        path: "/login",
-        element: <LoginRoute />,
+        path: "/farmers/login",
+        element: <FarmerLoginRoute />,
     },
     {
-        path: "/signup",
-        element: <SignUpRoute />,
+        path: "customers/login",
+        element: <CustomerLoginRoute />,
+    },
+    {
+        path: "/farmers/signup",
+        element: <FarmerSignUpRoute />,
+    },
+    {
+        path: "/customers/signup",
+        element: <CustomerSignUpRoute />,
     },
     {
         path: "/users",

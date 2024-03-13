@@ -42,6 +42,20 @@ app.delete("/api/farmers/:id", async(req, res) => {
 })
 
 
+app.post("/farmers/login", (req, res) => {
+    console.log("farmer login form submitted!", req.body)
+})
+app.post("/customers/login", (req, res) => {
+    console.log("customer login form submitted", req.body)
+})
+app.post("/farmers/signup", (req, res) => {
+    console.log("farmer signup data recieved", req.body)
+})
+app.post("/customers/signup", (req, res) => {
+    console.log("customer signup data recieved", req.body)
+})
+
+
 
 app.listen(5000, ()=>{
     console.log("Server started at port 5000!")
