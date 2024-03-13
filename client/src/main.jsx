@@ -7,39 +7,39 @@ import "./index.css";
 import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 
 //routes
-import Landing from "./routes/Landing.jsx";
+import LandingRoute from "./routes/LandingRoute.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
-import Home from "./routes/Home.jsx";
-import User from "./routes/User.jsx";
-import UserList from "./routes/UserList.jsx";
-import Login from "./routes/Login.jsx";
-import SignUp from "./routes/SignUp.jsx";
+import HomeRoute from "./routes/HomeRoute.jsx";
+import UserRoute from "./routes/UserRoute.jsx";
+import UserListRoute from "./routes/UserListRoute.jsx";
+import LoginRoute from "./routes/LoginRoute.jsx";
+import SignUpRoute from "./routes/SignUpRoute.jsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Landing />,
+        element: <LandingRoute />,
         errorElement: <ErrorPage />,
     },
     {
         path: "/home",
-        element: <Home />,
+        element: <HomeRoute />,
     },
     {
         path: "/login",
-        element: <Login />,
+        element: <LoginRoute />,
     },
     {
         path: "/signup",
-        element: <SignUp />,
+        element: <SignUpRoute />,
     },
     {
         path: "/users",
-        element: <UserList />,
+        element: <UserListRoute />,
     },
     {
         path: "/users/:id",
-        element: <User />,
+        element: <UserRoute />,
     },
 ]);
 

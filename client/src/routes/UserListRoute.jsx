@@ -2,7 +2,7 @@ import React from "react";
 import FarmerForm from "../components/FarmerForm";
 import FarmerList from "../components/FarmerList";
 
-function UserList() {
+function UserListRoute() {
     return (
         <div>
             <FarmerList />
@@ -11,4 +11,4 @@ function UserList() {
     );
 }
 
-export default UserList;
+export default UserListRoute;
