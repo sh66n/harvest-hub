@@ -8,14 +8,15 @@ import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 
 //routes
 import LandingRoute from "./routes/LandingRoute.jsx";
-import ErrorPage from "./components/ErrorPage.jsx";
+import ErrorPage from "./components/miscellaneous/ErrorPage.jsx";
 import HomeRoute from "./routes/HomeRoute.jsx";
-import UserRoute from "./routes/UserRoute.jsx";
-import UserListRoute from "./routes/UserListRoute.jsx";
-import FarmerLoginRoute from "./routes/FarmerLoginRoute.jsx";
-import FarmerSignUpRoute from "./routes/FarmerSignUpRoute.jsx";
-import CustomerLoginRoute from "./routes/CustomerLoginRoute.jsx";
-import CustomerSignUpRoute from "./routes/CustomerSignUpRoute.jsx";
+import FarmerRoute from "./routes/farmer/FarmerRoute.jsx";
+import FarmerIndexRoute from "./routes/farmer/FarmerIndexRoute.jsx";
+import FarmerLoginRoute from "./routes/farmer/FarmerLoginRoute.jsx";
+import FarmerSignUpRoute from "./routes/farmer/FarmerSignUpRoute.jsx";
+import CustomerLoginRoute from "./routes/customer/CustomerLoginRoute.jsx";
+import CustomerSignUpRoute from "./routes/customer/CustomerSignUpRoute.jsx";
+import CustomerIndexRoute from "./routes/customer/CustomerIndexRoute.jsx";
 
 const router = createBrowserRouter([
     {
@@ -44,12 +45,16 @@ const router = createBrowserRouter([
         element: <CustomerSignUpRoute />,
     },
     {
-        path: "/users",
-        element: <UserListRoute />,
+        path: "/farmers",
+        element: <FarmerIndexRoute />,
     },
     {
-        path: "/users/:id",
-        element: <UserRoute />,
+        path: "/farmers/:id",
+        element: <FarmerRoute />,
+    },
+    {
+        path: "/customers",
+        element: <CustomerIndexRoute />,
     },
 ]);
 

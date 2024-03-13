@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://localhost:5000/api";
 
 function LoginForm({ formFor }) {
     // const [formData, setFormData] = useState({ username: "", password: "" });

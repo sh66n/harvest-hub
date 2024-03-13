@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:5000/api/farmers";
 
-function UserRoute() {
+function FarmerRoute() {
     const [farmer, setFarmer] = useState([{ _id: "", name: "" }]);
     const { id } = useParams();
     useEffect(() => {
@@ -28,4 +28,4 @@ function UserRoute() {
     );
 }
 
-export default UserRoute;
+export default FarmerRoute;

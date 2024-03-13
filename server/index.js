@@ -22,7 +22,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/harvest-hub')
     })
 
 const Farmer = require("./models/farmer");
+const Customer = require("./models/customer");
 
+
+
+// FARMER ROUTES !!!!
 app.get("/api/farmers", async(req, res)=>{
     const allFarmers = await Farmer.find({});
     res.send(allFarmers)
@@ -37,19 +41,30 @@ app.post("/api/farmers", async(req, res) => {
 })
 app.delete("/api/farmers/:id", async(req, res) => {
     const {id} = req.params
-    console.log(id)
     await Farmer.deleteOne({_id: id})
+})
+app.post("/api/farmers/login", (req, res) => {
+    console.log("farmer login form submitted!", req.body)
+})
+app.post("/api/farmers/signup", (req, res) => {
+    console.log("farmer signup data recieved", req.body)
 })
 
 
-app.post("/farmers/login", (req, res) => {
-    console.log("farmer login form submitted!", req.body)
+
+
+// CUSTOMER ROUTES !!!!
+app.get("/api/customers", async(req, res) => {
+    const allCustomers = await Customer.find({});
+    res.send(allCustomers)
+})
+app.delete("/api/customers/:id", async(req, res) => {
+    console.log("hit this route")
+    const {id} = req.params;
+    await Customer.deleteOne({_id: id})
 })
 app.post("/customers/login", (req, res) => {
     console.log("customer login form submitted", req.body)
-})
-app.post("/farmers/signup", (req, res) => {
-    console.log("farmer signup data recieved", req.body)
 })
 app.post("/customers/signup", (req, res) => {
     console.log("customer signup data recieved", req.body)

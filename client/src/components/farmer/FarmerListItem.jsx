@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import DeleteButton from "./DeleteButton";
+import DeleteButton from "../miscellaneous/DeleteButton";
 import { Link } from "react-router-dom";
 
-function Farmer({ farmer, deleteFarmer }) {
+function FarmerListItem({ farmer, deleteFarmer }) {
     return (
         <div>
             <li>
-                <Link to={`/users/${farmer._id}`} key={farmer._id}>
+                <Link to={`/farmers/${farmer._id}`} key={farmer._id}>
                     {farmer.name}
                 </Link>
             </li>
@@ -16,4 +16,4 @@ function Farmer({ farmer, deleteFarmer }) {
     );
 }
 
-export default Farmer;
+export default FarmerListItem;
