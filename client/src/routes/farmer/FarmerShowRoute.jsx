@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const BASE_URL = "http://localhost:5000/api/farmers";
 
-function FarmerRoute() {
+function FarmerShowRoute() {
     const [farmer, setFarmer] = useState([{ _id: "", name: "" }]);
     const { id } = useParams();
     useEffect(() => {
@@ -17,15 +18,11 @@ function FarmerRoute() {
 
     return (
         <div>
-            {farmer.map((farmer) => {
-                return (
-                    <h1 key={farmer._id}>
-                        Id: {farmer._id} Name: {farmer.name}
-                    </h1>
-                );
-            })}
+            <h1>Farmer: {farmer.name}</h1>
+            <h1>Id: {farmer._id}</h1>
+            <Link to={`/farmers/${farmer._id}/edit`}>Edit</Link>
         </div>
     );
 }
 
-export default FarmerRoute;
+export default FarmerShowRoute;

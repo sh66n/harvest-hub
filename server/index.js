@@ -33,11 +33,11 @@ app.get("/api/farmers", async(req, res)=>{
 })
 app.get("/api/farmers/:id", async(req, res) => {
     const {id} = req.params
-    const requiredFarmer = await Farmer.find({_id: id});
+    const requiredFarmer = await Farmer.findById(id);
     res.send(requiredFarmer)
 })
 app.post("/api/farmers", async(req, res) => {
-    await Farmer.create(req.body);
+    const newFarmer = await Farmer.create(req.body);
 })
 app.delete("/api/farmers/:id", async(req, res) => {
     const {id} = req.params
@@ -58,8 +58,15 @@ app.get("/api/customers", async(req, res) => {
     const allCustomers = await Customer.find({});
     res.send(allCustomers)
 })
+app.post("/api/customers", async(req, res) => {
+    const newCustomer = await Customer.create(req.body);
+})
+app.get("/api/customers/:id", async(req, res) => {
+    const {id} = req.params;
+    const requiredCustomer = await Customer.findById(id);
+    res.send(requiredCustomer);
+})
 app.delete("/api/customers/:id", async(req, res) => {
-    console.log("hit this route")
     const {id} = req.params;
     await Customer.deleteOne({_id: id})
 })

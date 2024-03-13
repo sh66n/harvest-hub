@@ -7,7 +7,7 @@ function CustomerListItem({ customer, deleteCustomer }) {
     return (
         <div>
             <li>
-                <Link to={`/users/${customer._id}`} key={customer._id}>
+                <Link to={`/customers/${customer._id}`} key={customer._id}>
                     {customer.name}
                 </Link>
             </li>

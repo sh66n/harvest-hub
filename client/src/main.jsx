@@ -10,13 +10,17 @@ import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 import LandingRoute from "./routes/LandingRoute.jsx";
 import ErrorPage from "./components/miscellaneous/ErrorPage.jsx";
 import HomeRoute from "./routes/HomeRoute.jsx";
-import FarmerRoute from "./routes/farmer/FarmerRoute.jsx";
+import FarmerShowRoute from "./routes/farmer/FarmerShowRoute.jsx";
 import FarmerIndexRoute from "./routes/farmer/FarmerIndexRoute.jsx";
 import FarmerLoginRoute from "./routes/farmer/FarmerLoginRoute.jsx";
 import FarmerSignUpRoute from "./routes/farmer/FarmerSignUpRoute.jsx";
 import CustomerLoginRoute from "./routes/customer/CustomerLoginRoute.jsx";
 import CustomerSignUpRoute from "./routes/customer/CustomerSignUpRoute.jsx";
 import CustomerIndexRoute from "./routes/customer/CustomerIndexRoute.jsx";
+import CustomerShowRoute from "./routes/customer/CustomerShowRoute.jsx";
+import FarmerNewRoute from "./routes/farmer/FarmerNewRoute.jsx";
+import CustomerNewRoute from "./routes/customer/CustomerNewRoute.jsx";
+import FarmerEditRoute from "./routes/farmer/FarmerEditRoute.jsx";
 
 const router = createBrowserRouter([
     {
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
         element: <FarmerLoginRoute />,
     },
     {
-        path: "customers/login",
+        path: "/customers/login",
         element: <CustomerLoginRoute />,
     },
     {
@@ -49,12 +53,28 @@ const router = createBrowserRouter([
         element: <FarmerIndexRoute />,
     },
     {
+        path: "/farmers/new",
+        element: <FarmerNewRoute />,
+    },
+    {
         path: "/farmers/:id",
-        element: <FarmerRoute />,
+        element: <FarmerShowRoute />,
+    },
+    {
+        path: "/farmers/:id/edit",
+        element: <FarmerEditRoute />,
     },
     {
         path: "/customers",
         element: <CustomerIndexRoute />,
+    },
+    {
+        path: "/customers/new",
+        element: <CustomerNewRoute />,
+    },
+    {
+        path: "/customers/:id",
+        element: <CustomerShowRoute />,
     },
 ]);
 
