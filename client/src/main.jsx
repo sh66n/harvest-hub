@@ -21,6 +21,7 @@ import CustomerShowRoute from "./routes/customer/CustomerShowRoute.jsx";
 import FarmerNewRoute from "./routes/farmer/FarmerNewRoute.jsx";
 import CustomerNewRoute from "./routes/customer/CustomerNewRoute.jsx";
 import FarmerEditRoute from "./routes/farmer/FarmerEditRoute.jsx";
+import CustomerEditRoute from "./routes/customer/CustomerEditRoute.jsx";
 
 const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
     {
         path: "/customers/:id",
         element: <CustomerShowRoute />,
+    },
+    {
+        path: "/customers/:id/edit",
+        element: <CustomerEditRoute />,
     },
 ]);
 

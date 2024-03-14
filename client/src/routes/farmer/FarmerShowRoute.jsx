@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 const BASE_URL = "http://localhost:5000/api/farmers";
 
 function FarmerShowRoute() {
-    const [farmer, setFarmer] = useState([{ _id: "", name: "" }]);
+    const [farmer, setFarmer] = useState({ _id: "", name: "" });
     const { id } = useParams();
     useEffect(() => {
         async function getFarmerData() {
+            console.log("run");
             const response = await axios.get(`${BASE_URL}/${id}`);
             setFarmer(response.data);
         }
@@ -20,7 +21,9 @@ function FarmerShowRoute() {
         <div>
             <h1>Farmer: {farmer.name}</h1>
             <h1>Id: {farmer._id}</h1>
-            <Link to={`/farmers/${farmer._id}/edit`}>Edit</Link>
+            <button>
+                <Link to={`/farmers/${farmer._id}/edit`}>Edit</Link>
+            </button>
         </div>
     );
 }

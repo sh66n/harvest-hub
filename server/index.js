@@ -28,19 +28,24 @@ const Customer = require("./models/customer");
 
 // FARMER ROUTES !!!!
 app.get("/api/farmers", async(req, res)=>{
-    const allFarmers = await Farmer.find({});
+    const allFarmers = await Farmer.find({});                   //index
     res.send(allFarmers)
+})
+app.post("/api/farmers", async(req, res) => {
+    const newFarmer = await Farmer.create(req.body);            //create
 })
 app.get("/api/farmers/:id", async(req, res) => {
     const {id} = req.params
-    const requiredFarmer = await Farmer.findById(id);
+    const requiredFarmer = await Farmer.findById(id);           //show
     res.send(requiredFarmer)
 })
-app.post("/api/farmers", async(req, res) => {
-    const newFarmer = await Farmer.create(req.body);
+app.patch("/api/farmers/:id", async(req, res) => {
+    const {id} = req.params;
+    const updatedFarmer = await Farmer.findByIdAndUpdate(id, req.body, {new: true})
+    res.send(updatedFarmer)
 })
 app.delete("/api/farmers/:id", async(req, res) => {
-    const {id} = req.params
+    const {id} = req.params                                     //delete
     await Farmer.deleteOne({_id: id})
 })
 app.post("/api/farmers/login", (req, res) => {
@@ -65,6 +70,11 @@ app.get("/api/customers/:id", async(req, res) => {
     const {id} = req.params;
     const requiredCustomer = await Customer.findById(id);
     res.send(requiredCustomer);
+})
+app.patch("/api/customers/:id", async(req, res) => {
+    const {id} = req.params;
+    const updatedCustomer = await Customer.findByIdAndUpdate(id, req.body, {new: true})
+    res.send(updatedCustomer)
 })
 app.delete("/api/customers/:id", async(req, res) => {
     const {id} = req.params;

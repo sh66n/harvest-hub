@@ -3,17 +3,17 @@ import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/farmers";
+const BASE_URL = "http://localhost:5000/api/customers";
 
-function FarmerEditRoute() {
+function CustomerEditRoute() {
     const [farmer, setFarmer] = useState({ _id: "", name: "" });
     const { id } = useParams();
     useEffect(() => {
-        async function getFarmerData() {
-            const requestedFarmer = await axios.get(`${BASE_URL}/${id}`);
-            setFarmer(requestedFarmer.data);
+        async function getCustomerData() {
+            const requestedCustomer = await axios.get(`${BASE_URL}/${id}`);
+            setFarmer(requestedCustomer.data);
         }
-        getFarmerData();
+        getCustomerData();
     }, []);
 
     const {
@@ -26,7 +26,7 @@ function FarmerEditRoute() {
     const navigate = useNavigate();
     const onSubmit = async (data) => {
         reset();
-        navigate(`/farmers/${id}`);
+        navigate(`/customers/${id}`);
         const response = await axios.patch(`${BASE_URL}/${id}`, data);
     };
 
@@ -59,4 +59,4 @@ function FarmerEditRoute() {
     );
 }
 
-export default FarmerEditRoute;
+export default CustomerEditRoute;
