@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://localhost:5000/api";
 
 function SignUpForm({ formFor }) {
+    const [error, setError] = useState("");
     const {
         register,
         handleSubmit,
@@ -20,40 +21,57 @@ function SignUpForm({ formFor }) {
                 data
             );
         } catch (e) {
-            console.log("something went wrong", e);
+            setError("Username is already taken!");
         }
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="username">Username</label>
-            <input
-                type="text"
-                id="username"
-                {...register("username", {
-                    required: {
-                        value: true,
-                        message: "Please enter a username!",
-                    },
-                })}
-            />
-            {errors.username && <span>{errors.username.message}</span>}
+        <div>
+            <h1>Sign Up</h1>
+            {error && <span>{error}</span>}
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    {...register("name", {
+                        required: {
+                            value: true,
+                            message: "Please enter a name!",
+                        },
+                    })}
+                />
+                {errors.name && <span>{erros.name.message}</span>}
 
-            <label htmlFor="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                {...register("password", {
-                    required: {
-                        value: true,
-                        message: "Please enter a password!",
-                    },
-                })}
-            />
-            {errors.password && <span>{errors.password.message}</span>}
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    {...register("username", {
+                        required: {
+                            value: true,
+                            message: "Please enter a username!",
+                        },
+                    })}
+                />
+                {errors.username && <span>{errors.username.message}</span>}
 
-            <button>Submit</button>
-        </form>
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    {...register("password", {
+                        required: {
+                            value: true,
+                            message: "Please enter a password!",
+                        },
+                    })}
+                />
+                {errors.password && <span>{errors.password.message}</span>}
+
+                <button>Submit</button>
+            </form>
+        </div>
     );
 }
 

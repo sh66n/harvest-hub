@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import FarmerListItem from "./FarmerListItem";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const BASE_URL = "http://localhost:5000/api";
 
 function FarmerList() {
+    const [error, setError] = useState("");
     const [farmers, setFarmers] = useState([{ _id: "", name: "" }]);
     useEffect(() => {
         async function getFarmerData() {
@@ -15,11 +17,22 @@ function FarmerList() {
     });
 
     const deleteFarmer = async (id) => {
-        await axios.delete(`${BASE_URL}/farmers/${id}`);
+        try {
+            const response = await axios.delete(`${BASE_URL}/farmers/${id}`, {
+                headers: {
+                    authorization:
+                        "Bearer " + localStorage.getItem("accessToken"),
+                },
+            });
+            console.log(response);
+        } catch (error) {
+            setError(error.response.data);
+        }
     };
 
     return (
         <div>
+            {error && <span>{error}</span>}
             <ul>
                 {farmers.map((farmer) => (
                     <FarmerListItem

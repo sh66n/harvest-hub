@@ -10,7 +10,6 @@ function FarmerShowRoute() {
     const { id } = useParams();
     useEffect(() => {
         async function getFarmerData() {
-            console.log("run");
             const response = await axios.get(`${BASE_URL}/${id}`);
             setFarmer(response.data);
         }
